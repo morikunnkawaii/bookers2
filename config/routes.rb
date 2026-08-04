@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users, only: [:new, :create] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
   resource :session
   resources :passwords, param: :token
   root to: "home#top"
