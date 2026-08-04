@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   root to: "home#top"
   get "home/about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
