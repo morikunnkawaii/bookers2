@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "books/index"
+  get "books/show"
   resources :users, only: [:new, :create] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
   resource :session, path_names: { new: "sign_in"}
   resources :passwords, param: :token
