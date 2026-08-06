@@ -10,7 +10,11 @@
 <h1>Books</h1>
 <% @books.each do |book| %>
   <div>
-    <p>本のタイトル<%= book.title %></p>
+    <p>本のタイトル
+      <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+      <% end %>
+    </p>
     <p>感想<%= book.body %></p>
   </div>
 <% end %>
