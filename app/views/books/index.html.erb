@@ -6,3 +6,11 @@
   <%= f.text_area :body %>
   <%= f.submit 'Create Book' %>
 <% end %>
+
+<h1>Books</h1>
+<% @books.each do |book| %>
+  <div>
+    <p>本のタイトル<%= book.title %></p>
+    <p>感想<%= book.body %></p>
+  </div>
+<% end %>
