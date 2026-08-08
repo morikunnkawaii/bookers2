@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :books, only: [:index, :create, :show, :destroy]
-  resources :users, only: [:new, :create, :show, :edit, :update] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
+  resources :users, only: [:new, :create, :show, :edit, :update,:index] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
   resource :session, path_names: { new: "sign_in"}
   resources :passwords, param: :token
   root to: "homes#top"

@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
 
   def after_logout_url
-    home_path
+    homes_path
   end
 end
