@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
+    params.require(:user).permit(:name, :introduction, :email_address, :password, :password_confirmation, :profile_image)
   end
 end
+#updateで最初名前しか帰れなかったのは参照するpermitの中に:introduction　:profile_image　が含まれていなかった為

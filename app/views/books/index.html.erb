@@ -10,6 +10,7 @@
 <h1>Books</h1>
 <% @books.each do |book| %>
   <div>
+    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
     <p>本のタイトル
       <%= link_to book_path(book.id) do %>
         <%= book.title %>

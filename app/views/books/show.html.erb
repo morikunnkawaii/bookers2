@@ -1,5 +1,6 @@
 <h1>Book detail</h1>
 <div>
+  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
   <p>本のタイトル<%= @book.title %></p>
   <p>感想<%= @book.body %></p>
   <p><%= @book.user.name %></p>
