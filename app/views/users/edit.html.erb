@@ -3,10 +3,11 @@
   <label for="inputName">名前</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前を入力してください" %>
   <label for="inputImage">Image</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  <%= f.file_field :profile_image, id:"inputImage", placeholder: "プロフィール画像", accept: "image/*" %>
   <label for="inputIntroduction">自己紹介文</label>
   <%= f.text_field :introduction, id:"inputIntroduction", placeholder:"自己紹介文を入力してください" %> 
   <%= f.submit "Update User" %>
 <% end %> 
 <!--autofocus:trueはカーソルを合わせなくてもすぐに入力できる記述 -->
 <!--placeholderは入力していないフォームの中に薄っすら表示される文字 -->
+<!--label for idの組み合わせでラジオボタンができる。例えば3行目の名前を押せば名前の入力画面に。5行目のImageを押せば画像投稿になる-->

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
   resource :session, path_names: { new: "sign_in"}
   resources :passwords, param: :token
-  root to: "home#top"
-  get "home/about", as:'about'#名前付きにすることでabout_pathを指定できるようにした。これがないとa hrefで/home/about等はよくても/userが来るとルーティングエラーになっていた
+  root to: "homes#top"
+  get "home/about", to:"homes#about", as:'about'#名前付きにすることでabout_pathを指定できるようにした。これがないとa hrefで/home/about等はよくても/userが来るとルーティングエラーになっていた
+  #get"home/about"ここはurlを自由に変更できる　to:"homes#about"ここでアクションを呼び出す記述
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
