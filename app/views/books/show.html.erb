@@ -4,6 +4,7 @@
   <p>本のタイトル<%= @book.title %></p>
   <p>感想<%= @book.body %></p>
   <p><%= @book.user.name %></p>
+  <p><%= link_to "Edit", edit_book_path %></p>
   <% if @book.user == Current.user %>
     <%= link_to "destroy", book_path(@book), data: { turbo_method: :delete } %>
   <% end %>
