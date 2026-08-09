@@ -31,6 +31,12 @@
         <li>
           <%= link_to 'Home', user_path(Current.user.id) %>
         </li>
+        <li>
+          <%= link_to 'Books', books_path %>
+        </li>
+        <li>
+          <%= link_to 'Users', users_path %>
+        </li>
       <% else %>
         <li>
           <%= link_to "Sign up", new_user_path %>
