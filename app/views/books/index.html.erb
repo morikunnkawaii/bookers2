@@ -1,3 +1,11 @@
+<% if @book.errors.any? %>
+  <%= pluralize(@book.errors.count, 'error') %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h1>New Book</h1>
 <%= form_with model: @book do |f| %>
   <h4>本のタイトル</h4>
