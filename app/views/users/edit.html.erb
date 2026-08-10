@@ -1,4 +1,12 @@
 <h2>User info</h2>
+<% if @user.errors.any? %>
+  <%= pluralize(@user.errors.count, 'error') %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= form_with model: @user do |f| %>
   <label for="inputName">名前</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前を入力してください" %>
