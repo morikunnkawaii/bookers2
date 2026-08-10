@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to new_session_path notice: "successfully"#後で変更するよユーザー詳細画面へ
+      redirect_to new_session_path notice: "Welcome! You have signed up successfully"#後で変更するよユーザー詳細画面へ
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(user_params)
+    flash[:notice] = "You have updated user successfully"
     redirect_to user_path
   end
 

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_logout_url
+    flash[:notice] = "Signed out successfully"
     root_path
   end
 end
