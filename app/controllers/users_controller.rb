@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      start_new_session_for(@user)
-      redirect_to user_path(@user), notice: "Welcome! You have signed up successfully"#後で変更するよユーザー詳細画面へ
+      start_new_session_for(@user) #この記述でログインしている状態になる。これがないために、sessionに飛ばされていた
+      redirect_to user_path(@user), notice: "Welcome! You have signed up successfully"
     else
       render :new, status: :unprocessable_entity
     end

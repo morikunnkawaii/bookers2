@@ -1,4 +1,5 @@
 <%= render 'book', user:@user, booknew:@booknew %>
+<!-- 部分テンプレート、user:@userのuserの中に@userをいれるという意味部分テンプレートにあるローカル変数userへ渡される -->
 <h1>Book detail</h1>
 <div>
   <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
