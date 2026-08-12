@@ -1,13 +1,13 @@
-<% if @book.errors.any? %>
-  <%= pluralize(@book.errors.count, 'error') %>
+<% if @booknew.errors.any? %>
+  <%= pluralize(@booknew.errors.count, 'error') %>
   <ul>
-    <% @book.errors.full_messages.each do |message| %>
+    <% @booknew.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= render 'book', books:@book %>
+<%= render 'book', user:@user, booknew:@booknew %>
 
 <h1>Books</h1>
 <% @books.each do |book| %>

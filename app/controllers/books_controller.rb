@@ -1,16 +1,17 @@
 class BooksController < ApplicationController
   def index
-    @book = Book.new
+    @booknew = Book.new
     @books = Book.all
-    @book.user_id = Current.user.id
+    @booknew.user_id = Current.user.id
+    @user = Current.user
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = Current.user.id
-    if @book.save
+    @booknew = Book.new(book_params)
+    @booknew.user_id = Current.user.id
+    if @booknew.save
       flash[:notice] = "You have created book successfully"
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@booknew.id)
     else
       @books = Book.all
       render :index, status: :unprocessable_entity
@@ -18,6 +19,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @booknew = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
   end

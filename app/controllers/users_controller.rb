@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to new_session_path notice: "Welcome! You have signed up successfully"#後で変更するよユーザー詳細画面へ
+      start_new_session_for(@user)
+      redirect_to user_path(@user), notice: "Welcome! You have signed up successfully"#後で変更するよユーザー詳細画面へ
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book = @user
   end
 
   def edit
@@ -43,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :email_address, :password, :password_confirmation, :profile_image)
+    params.require(:user).permit(:name, :introduction, :email_address, :password, :password_confirmation, :profile_image, )
   end
 
   def is_matiching_login_user
