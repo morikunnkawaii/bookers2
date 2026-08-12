@@ -2,7 +2,7 @@
 <%= image_tag user.get_profile_image(100, 100) %>
 <h3>名前<%= user.name %></h3>
 <h3>自己紹介文<%= user.introduction %></h3>
-<p><%= link_to "プロフィール編集", edit_user_path(Current.user.id) %></p>
+<p><%= link_to "プロフィール編集", edit_user_path(user.id) %></p>
 
 <h1>New book</h1>
 <%= form_with model: booknew do |f| %>
@@ -13,3 +13,4 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 <!-- 部分テンプレートはインスタンス変数ではなくローカル変数を使う -->
+<!-- プロフィール編集でedit_user_path(Current.user.id)にしていた為、アクセス制限がかかることなくログインしているユーザーeditに飛んでいた。Currentを無くすことで、そのユーザーのIDを引っ張ってくる為制限がかかり自分のuser showへリダイレクトされるようになった -->
