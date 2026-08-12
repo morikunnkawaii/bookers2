@@ -18,12 +18,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = Current.user
+    @booknew = Book.new
   end
 
   def show
     @user = User.find(params[:id])
     @books = @user.books
     @book = @user
+    @booknew = Book.new #どうやらアソシエーションのおかげか、book.newができる
   end
 
   def edit
