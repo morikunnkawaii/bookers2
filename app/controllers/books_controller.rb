@@ -23,10 +23,12 @@ class BooksController < ApplicationController
   end
 
   def edit
+    is_matiching_login_user
     @book = Book.find(params[:id])
   end
 
   def update
+    is_matiching_login_user
     @book = Book.find(params[:id])
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully"
@@ -46,6 +48,13 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+   
+  def is_matiching_login_user
+    user = User.find(params[:id])
+    unless user.id == Current.user.id
+      redirect_to books_path
+    end
   end
 end
 # @book.user_id = Current.user.id これを使うことによってuser modelからひっぱてこれた

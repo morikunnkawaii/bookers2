@@ -25,10 +25,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    is_matiching_login_user
     @user = User.find(params[:id])
   end
 
   def update
+    is_matiching_login_user
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully"
@@ -42,6 +44,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :email_address, :password, :password_confirmation, :profile_image)
+  end
+
+  def is_matiching_login_user
+    user = User.find(params[:id])
+    unless user.id == Current.user.id
+      redirect_to user_path(Current.user.id)
+    end
   end
 end
 #updateで最初名前しか帰れなかったのは参照するpermitの中に:introduction　:profile_image　が含まれていなかった為
