@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   allow_unauthenticated_access only: [:new, :create] #認証スキップ
 
   def new
-    @user = User.new
+    if authenticated?
+      redirect_to user_path(Current.user)
+    else
+      @user = User.new
+    end
   end
 
   def create
