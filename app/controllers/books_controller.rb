@@ -13,8 +13,13 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully"
       redirect_to book_path(@booknew.id)
     else
+      @user = Current.user
       @books = Book.all
-      render :index, status: :unprocessable_entity
+      count = @booknew.errors.count
+      error_header = view_context.pluralize(count, "error") + " prohibited this book from being saved:" #view_context.pluralizeでveiwのpluralizeメソッドと同じことが出来る
+      error_messages = @booknew.errors.full_messages.join(",")
+      flash[:alert] = "#{error_header} #{error_messages}"
+      redirect_to books_path
     end
   end
 
