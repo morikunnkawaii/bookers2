@@ -27,15 +27,15 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
         <div class="container">
-          <% if authenticated? %>
-            <a class="navbar-brand" href="/">
-              <span>Bookers</span>
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse " id="navbarNavDropdown" style>
-              <ul class="navbar-nav ml-auto">
+          <a class="navbar-brand" href="/">
+            <span>Bookers</span>
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse " id="navbarNavDropdown" style>
+            <ul class="navbar-nav ml-auto">
+              <% if authenticated? %>
                 <li>
                   <%= link_to user_path(Current.user.id), class: "nav-link text-light" do %>
                     <i class="fa-solid fa-house"></i>Home
@@ -56,17 +56,7 @@
                     <i class="fa-solid fa-right-from-bracket"></i>Log out
                   <% end %>
                 </li>
-              </ul>
-            </div>
-          <% else %>
-            <a class="navbar-brand" href="/">
-              <span>Bookers</span>
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
-              <ul class="navbar-nav ml-auto">
+              <% else %>
                 <li>
                   <%= link_to root_path, class: "nav-link text-light" do %>
                     <i class="fa-solid fa-house"></i>Home
@@ -78,18 +68,18 @@
                   <% end %>
                 </li>
                 <li>
-                    <%= link_to new_user_path, class: "nav-link text-light" do %>
-                      <i class="fa-solid fa-user-plus"></i>Sign up
-                    <% end %>
+                  <%= link_to new_user_path, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-user-plus"></i>Sign up
+                  <% end %>
                 </li>
                 <li>
-                    <%= link_to new_session_path, class: "nav-link text-light" do %>
-                      <i class="fa-solid fa-right-from-bracket"></i>Log in
-                    <% end %>
+                  <%= link_to new_session_path, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-right-from-bracket"></i>Log in
+                  <% end %>
                 </li>
-              </ul>
-            </div>
-          <% end %>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>

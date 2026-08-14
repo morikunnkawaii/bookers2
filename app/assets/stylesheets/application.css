@@ -12,3 +12,28 @@
  a {
   text-decoration: none !important;
  }
+ 
+ .form-group {
+  margin-bottom: 1rem;
+ }
+
+ label{
+  margin-bottom: .5rem;
+ }
+
+ .table th, .table td {
+  padding: .75rem;
+  border-top: 1px solid #dee2e6;
+  vertical-align: top;
+ }
+
+ .table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+ }
+
+ .table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+ }
