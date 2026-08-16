@@ -15,11 +15,7 @@ class BooksController < ApplicationController
     else
       @user = Current.user
       @books = Book.all
-      count = @booknew.errors.count
-      error_header = view_context.pluralize(count, "error") + " prohibited this book from being saved:" #view_context.pluralizeでveiwのpluralizeメソッドと同じことが出来る
-      error_messages = @booknew.errors.full_messages.join(",")
-      flash[:alert] = "#{error_header} #{error_messages}"
-      redirect_to books_path
+      render :index, status: :unprocessable_entity
     end
   end
 
