@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :books, only: [:index, :create, :show, :edit, :update, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update,:index] , path_names: { new: "sign_up"} #path_namesでurlをsign_up
-  resource :session, path_names: { new: "sign_in"}
+  resource :session
   resources :passwords, param: :token
   root to: "homes#top"
   get "home/about", to:"homes#about", as:'about'#名前付きにすることでabout_pathを指定できるようにした。これがないとa hrefで/home/about等はよくても/userが来るとルーティングエラーになっていた
