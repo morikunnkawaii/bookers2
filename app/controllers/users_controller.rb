@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   allow_unauthenticated_access only: [:new, :create] #認証スキップ
+  before_action :ensure_guest_user, only: [:edit]
 
   def new
     if authenticated?
@@ -59,6 +60,13 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     unless user.id == Current.user.id
       redirect_to user_path(Current.user.id)
+    end
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはログイン編集できません"
     end
   end
 end

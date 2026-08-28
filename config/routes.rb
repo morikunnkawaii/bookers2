@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   root to: "homes#top"
   get "home/about", to:"homes#about", as:'about'#名前付きにすることでabout_pathを指定できるようにした。これがないとa hrefで/home/about等はよくても/userが来るとルーティングエラーになっていた
+  post "guest_sign_in", to: "guest_sessions#create", as: :guest_sign_in
   #get"home/about"ここはurlを自由に変更できる　to:"homes#about"ここでアクションを呼び出す記述
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
